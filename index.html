@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ตารางสินค้าและคำนวณราคารวม</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-inner">
+      <div>
+        <h1>ระบบตารางสินค้า</h1>
+        <p class="subtitle">คำนวณราคารวม +35% และภาษีมูลค่าเพิ่ม 7% อัตโนมัติ</p>
+      </div>
+      <div class="db-status">บันทึกข้อมูลลงในเครื่อง (LocalStorage)</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="toolbar">
+      <div class="left-tools">
+        <button id="add-row" class="btn primary">เพิ่มสินค้า</button>
+        <button id="clear-all" class="btn danger outline">ล้างข้อมูล</button>
+      </div>
+    </section>
+
+    <section class="table-card">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 2.5rem;">#</th>
+              <th style="min-width: 180px;">สินค้า</th>
+              <th style="min-width: 120px;">ราคาต่อหน่วย (฿)</th>
+              <th colspan="8" class="center">จำนวนตามจุด</th>
+              <th style="min-width: 140px;">รวมต่อรายการ (฿)</th>
+              <th style="width: 3rem;"></th>
+            </tr>
+            <tr class="subhead">
+              <th></th><th></th><th></th>
+              <th>จุดที่ 1</th><th>จุดที่ 2</th><th>จุดที่ 3</th><th>จุดที่ 4</th>
+              <th>จุดที่ 5</th><th>จุดที่ 6</th><th>จุดที่ 7</th><th>จุดที่ 8</th>
+              <th></th><th></th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+          <tfoot>
+            <tr class="totals-per-point">
+              <td></td>
+              <td class="label" colspan="2">ราคารวมของแต่ละจุด (฿)</td>
+              <td id="sum-p1" class="numeric">0</td>
+              <td id="sum-p2" class="numeric">0</td>
+              <td id="sum-p3" class="numeric">0</td>
+              <td id="sum-p4" class="numeric">0</td>
+              <td id="sum-p5" class="numeric">0</td>
+              <td id="sum-p6" class="numeric">0</td>
+              <td id="sum-p7" class="numeric">0</td>
+              <td id="sum-p8" class="numeric">0</td>
+              <td id="grand-base" class="numeric strong" colspan="2">0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section class="totals-grid">
+      <div class="card metric">
+        <div class="metric-label">รวมทั้งหมด (ก่อนบวก %)</div>
+        <div id="total-base" class="metric-value">฿0.00</div>
+      </div>
+      <div class="card metric">
+        <div class="metric-label">35% ของราคารวม</div>
+        <div id="total-35" class="metric-value">฿0.00</div>
+      </div>
+      <div class="card metric">
+        <div class="metric-label">รวม +35%</div>
+        <div id="total-plus-35" class="metric-value">฿0.00</div>
+      </div>
+      <div class="card metric">
+        <div class="metric-label">ภาษีมูลค่าเพิ่ม 7%</div>
+        <div id="vat-7" class="metric-value">฿0.00</div>
+      </div>
+      <div class="card metric highlight">
+        <div class="metric-label">ราคารวมสุทธิ</div>
+        <div id="total-final" class="metric-value">฿0.00</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <span>UI สวยงาม รองรับมือถือ และคำนวณอัตโนมัติ</span>
+    </div>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
